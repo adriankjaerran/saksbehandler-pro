@@ -67,7 +67,7 @@ const Landing = () => {
               value={extractionPrompt}
               onChange={(e) => setExtractionPrompt(e.target.value)}
               placeholder="F.eks.: Ekstraher all informasjon relatert til skadeomfang og arbeidsevne..."
-              className="h-32"
+              className="h-32 text-white placeholder:text-gray-400"
             />
           </div>
 
