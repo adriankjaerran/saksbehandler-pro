@@ -5,6 +5,7 @@ interface TextSnippet {
   id: string;
   text: string;
   isHighlighted: boolean;
+  status?: 'warning' | 'success' | 'info';
 }
 
 interface DocumentViewerProps {
@@ -22,19 +23,32 @@ export const DocumentViewer: React.FC<DocumentViewerProps> = ({ content, isLoadi
     );
   }
 
+  const getHighlightColor = (status?: 'warning' | 'success' | 'info') => {
+    switch (status) {
+      case 'warning':
+        return 'bg-orange-950/50 hover:bg-orange-950/70';
+      case 'success':
+        return 'bg-green-950/50 hover:bg-green-950/70';
+      case 'info':
+        return 'bg-blue-950/50 hover:bg-blue-950/70';
+      default:
+        return 'hover:bg-gray-800';
+    }
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6 min-h-[300px] animate-fade-in">
-      <div className="prose max-w-none space-y-4">
+    <div className="bg-[#1A1F2C] rounded-lg p-6 min-h-[600px] text-gray-200 animate-fade-in">
+      <div className="prose prose-invert max-w-none space-y-4">
         {content.map((snippet) => (
-          <p
+          <div
             key={snippet.id}
             onClick={() => onSnippetClick(snippet.id)}
             className={`cursor-pointer transition-colors ${
-              snippet.isHighlighted ? 'bg-blue-50 hover:bg-blue-100' : 'hover:bg-gray-50'
-            } p-2 rounded`}
+              snippet.isHighlighted ? getHighlightColor(snippet.status) : 'hover:bg-gray-800'
+            } p-4 rounded-lg`}
           >
-            {snippet.text}
-          </p>
+            <p className="text-sm leading-relaxed">{snippet.text}</p>
+          </div>
         ))}
       </div>
     </div>

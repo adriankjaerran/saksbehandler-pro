@@ -8,23 +8,35 @@ interface TextSnippet {
   id: string;
   text: string;
   isHighlighted: boolean;
+  status?: 'warning' | 'success' | 'info';
+  title?: string;
+  description?: string;
 }
 
 const dummySnippets: TextSnippet[] = [
   {
     id: '1',
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    isHighlighted: false
+    text: "NOW, THEREFORE, in consideration of the covenants and agreements set forth in this Agreement, and for other good and valuable consideration, the receipt and sufficiency of which is hereby acknowledged, Organisation 1 and Organisation 2 hereby agree as follows:",
+    isHighlighted: false,
+    status: 'info',
+    title: 'Non-solicitation terms assessment',
+    description: 'The Joint Venture Agreement does not explicitly mention non-solicitation terms.'
   },
   {
     id: '2',
-    text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    isHighlighted: false
+    text: "4.0 Distributive Share. The net operating income and net operating loss of the Joint Venture shall be allocated and shared between and shared by the Joint Venture Parties in proportion to their performance of work.",
+    isHighlighted: false,
+    status: 'success',
+    title: 'Equitable Profit and Loss Distribution Formula',
+    description: 'This formula ensures that profits and losses are distributed based on the actual contribution of each party, which is a fair approach to allocation.'
   },
   {
     id: '3',
-    text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    isHighlighted: false
+    text: "3.0 Percentage Ownership. Each Venturer's respective interest in the Joint Venture (hereinafter called "Percentage Ownership Interest") is indicated below: Organisation 1 - Fifty-one percent (51%), Organisation 2 - Forty-nine percent (49%).",
+    isHighlighted: false,
+    status: 'warning',
+    title: 'Lack of Explicit Mutual Objectives Balance',
+    description: 'While the agreement specifies percentage ownership and responsibilities, it lacks a clear statement on how the joint venture's goals will be aligned to benefit both parties equally.'
   }
 ];
 
@@ -118,15 +130,21 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto py-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Document Processor</h1>
+    <div className="min-h-screen bg-[#1A1F2C]">
+      <div className="container mx-auto py-4">
+        <div className="flex items-center justify-between mb-6 text-white">
+          <h1 className="text-xl font-semibold">Joint Venture Agreement</h1>
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-gray-400">Anonymisation</span>
+            <span className="bg-[#FFE81E] text-black px-3 py-1 rounded-full text-sm">Time Saved: 1 hour 55min</span>
+          </div>
+        </div>
         
-        <div className="grid grid-cols-1 gap-8 mb-8">
+        <div className="grid grid-cols-1 gap-4 mb-6">
           <FileUpload onFilesUploaded={handleFilesUploaded} />
         </div>
 
-        <div className="flex gap-8">
+        <div className="flex gap-6">
           <div className="flex-1">
             <DocumentViewer 
               content={content} 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wand2, FileText, Copy, RefreshCw } from 'lucide-react';
+import { Wand2, FileText, Copy, RefreshCw, AlertCircle, CheckCircle2, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
@@ -28,42 +28,129 @@ export const Sidebar: React.FC<SidebarProps> = ({
   };
 
   return (
-    <div className="w-64 border-l border-gray-200 p-4 space-y-4">
-      <h3 className="font-semibold text-gray-700 mb-4">
-        {selectedSnippetId ? 'Snippet Actions' : 'Document Actions'}
-      </h3>
-      
-      <div className="space-y-2">
-        <Button
-          variant="outline"
-          className="w-full justify-start"
-          onClick={() => onRewrite(selectedSnippetId)}
-          disabled={isProcessing}
-        >
-          <Wand2 className="mr-2 h-4 w-4" />
-          Rewrite {selectedSnippetId ? 'Snippet' : 'All'}
-        </Button>
+    <div className="w-80 bg-[#1E2433] p-6 rounded-lg space-y-6">
+      <div className="flex items-center justify-between">
+        <h3 className="font-semibold text-white">Review</h3>
+        <span className="text-sm text-gray-400">AI Associate</span>
+      </div>
 
-        <Button
-          variant="outline"
-          className="w-full justify-start"
-          onClick={() => onSimplify(selectedSnippetId)}
-          disabled={isProcessing}
-        >
-          <RefreshCw className="mr-2 h-4 w-4" />
-          Simplify {selectedSnippetId ? 'Snippet' : 'All'}
-        </Button>
+      <div className="space-y-4">
+        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3">
+          <div className="flex items-start gap-2">
+            <Info className="w-5 h-5 text-blue-400 mt-1" />
+            <div>
+              <h4 className="text-white font-medium">Non-solicitation terms assessment</h4>
+              <p className="text-sm text-gray-400 mt-1">
+                The Joint Venture Agreement does not explicitly mention non-solicitation terms.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onRewrite(selectedSnippetId)}
+            >
+              Highlight
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onSimplify(selectedSnippetId)}
+            >
+              Explain
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onShowOriginal(selectedSnippetId)}
+            >
+              Re-draft
+            </Button>
+          </div>
+        </div>
 
-        <Button
-          variant="outline"
-          className="w-full justify-start"
-          onClick={() => onShowOriginal(selectedSnippetId)}
-          disabled={isProcessing}
-        >
-          <FileText className="mr-2 h-4 w-4" />
-          Show Original {selectedSnippetId ? 'Snippet' : 'All'}
-        </Button>
+        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3">
+          <div className="flex items-start gap-2">
+            <CheckCircle2 className="w-5 h-5 text-green-400 mt-1" />
+            <div>
+              <h4 className="text-white font-medium">Equitable Profit and Loss Distribution Formula</h4>
+              <p className="text-sm text-gray-400 mt-1">
+                This formula ensures that profits and losses are distributed based on the actual contribution of each party.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onRewrite(selectedSnippetId)}
+            >
+              Highlight
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onSimplify(selectedSnippetId)}
+            >
+              Explain
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onShowOriginal(selectedSnippetId)}
+            >
+              Re-draft
+            </Button>
+          </div>
+        </div>
 
+        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3">
+          <div className="flex items-start gap-2">
+            <AlertCircle className="w-5 h-5 text-orange-400 mt-1" />
+            <div>
+              <h4 className="text-white font-medium">Lack of Explicit Mutual Objectives Balance</h4>
+              <p className="text-sm text-gray-400 mt-1">
+                While the agreement specifies percentage ownership and responsibilities, it lacks clear alignment of goals.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onRewrite(selectedSnippetId)}
+            >
+              Highlight
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onSimplify(selectedSnippetId)}
+            >
+              Explain
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => onShowOriginal(selectedSnippetId)}
+            >
+              Re-draft
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="pt-4 border-t border-gray-800">
         <Button
           variant="outline"
           className="w-full justify-start"
@@ -71,7 +158,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           disabled={isProcessing}
         >
           <Copy className="mr-2 h-4 w-4" />
-          Copy Content
+          Copy All Content
         </Button>
       </div>
     </div>
