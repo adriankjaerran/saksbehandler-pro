@@ -16,27 +16,27 @@ interface TextSnippet {
 const dummySnippets: TextSnippet[] = [
   {
     id: '1',
-    text: "NOW, THEREFORE, in consideration of the covenants and agreements set forth in this Agreement, and for other good and valuable consideration, the receipt and sufficiency of which is hereby acknowledged, Organisation 1 and Organisation 2 hereby agree as follows:",
+    text: 'MR-undersøkelse av høyre kne utført 15.03.2024: Undersøkelsen viser en komplett ruptur av fremre korsbånd (ACL) med assosiert beinmargsødem i laterale femurkondyl og laterale tibiaplatå. Det ses også en grad II skade av det mediale kollateralligamentet.',
     isHighlighted: false,
     status: 'info',
-    title: 'Non-solicitation terms assessment',
-    description: 'The Joint Venture Agreement does not explicitly mention non-solicitation terms.'
+    title: 'Medisinske Funn',
+    description: 'MR-undersøkelsen bekrefter alvorlig kneskade som krever operativ behandling.'
   },
   {
     id: '2',
-    text: "4.0 Distributive Share. The net operating income and net operating loss of the Joint Venture shall be allocated and shared between and shared by the Joint Venture Parties in proportion to their performance of work.",
+    text: 'Vedtak fra NAV Arbeid og Ytelser datert 01.04.2024: Basert på dokumentert skade under arbeidstid 10.03.2024 og påfølgende medisinsk vurdering, innvilges søker rett til arbeidsavklaringspenger i henhold til folketrygdloven § 11-5. Vedtaket gjelder fra 15.03.2024 til 15.09.2024.',
     isHighlighted: false,
     status: 'success',
-    title: 'Equitable Profit and Loss Distribution Formula',
-    description: 'This formula ensures that profits and losses are distributed based on the actual contribution of each party, which is a fair approach to allocation.'
+    title: 'NAV Vedtak',
+    description: 'Positivt vedtak om arbeidsavklaringspenger basert på dokumentert yrkesskade.'
   },
   {
     id: '3',
-    text: '3.0 Percentage Ownership. Each Venturer\'s respective interest in the Joint Venture (hereinafter called "Percentage Ownership Interest") is indicated below: Organisation 1 - Fifty-one percent (51%), Organisation 2 - Forty-nine percent (49%).',
+    text: 'Spesialistvurdering fra Oslo Universitetssykehus 20.03.2024: Pasienten har betydelig redusert arbeidsevne grunnet skaden. Operasjon er planlagt 05.04.2024, med forventet rehabiliteringsperiode på 6-8 måneder. Pasienten vil ikke kunne returnere til sitt vanlige arbeid som bygningsarbeider i denne perioden.',
     isHighlighted: false,
     status: 'warning',
-    title: 'Lack of Explicit Mutual Objectives Balance',
-    description: 'While the agreement specifies percentage ownership and responsibilities, it lacks a clear statement on how the joint venture\'s goals will be aligned to benefit both parties equally.'
+    title: 'Spesialistvurdering',
+    description: 'Vurdering indikerer langvarig rehabiliteringsperiode som påvirker arbeidsevnen betydelig.'
   }
 ];
 
@@ -133,10 +133,10 @@ const Index = () => {
     <div className="min-h-screen bg-[#1A1F2C]">
       <div className="container mx-auto py-4">
         <div className="flex items-center justify-between mb-6 text-white">
-          <h1 className="text-xl font-semibold">Joint Venture Agreement</h1>
+          <h1 className="text-xl font-semibold">NAV Saksbehandling - Yrkesskade</h1>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-400">Anonymisation</span>
-            <span className="bg-[#FFE81E] text-black px-3 py-1 rounded-full text-sm">Time Saved: 1 hour 55min</span>
+            <span className="text-sm text-gray-400">Automatisk Analyse</span>
+            <span className="bg-[#FFE81E] text-black px-3 py-1 rounded-full text-sm">Tid Spart: 2 timer 15min</span>
           </div>
         </div>
         
