@@ -4,17 +4,19 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
 interface SidebarProps {
-  onRewrite: () => void;
-  onSimplify: () => void;
-  onShowOriginal: () => void;
+  onRewrite: (snippetId: string | null) => void;
+  onSimplify: (snippetId: string | null) => void;
+  onShowOriginal: (snippetId: string | null) => void;
   isProcessing: boolean;
+  selectedSnippetId: string | null;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
   onRewrite,
   onSimplify,
   onShowOriginal,
-  isProcessing
+  isProcessing,
+  selectedSnippetId
 }) => {
   const handleCopy = async () => {
     try {
@@ -27,37 +29,39 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <div className="w-64 border-l border-gray-200 p-4 space-y-4">
-      <h3 className="font-semibold text-gray-700 mb-4">Document Actions</h3>
+      <h3 className="font-semibold text-gray-700 mb-4">
+        {selectedSnippetId ? 'Snippet Actions' : 'Document Actions'}
+      </h3>
       
       <div className="space-y-2">
         <Button
           variant="outline"
           className="w-full justify-start"
-          onClick={onRewrite}
+          onClick={() => onRewrite(selectedSnippetId)}
           disabled={isProcessing}
         >
           <Wand2 className="mr-2 h-4 w-4" />
-          Rewrite
+          Rewrite {selectedSnippetId ? 'Snippet' : 'All'}
         </Button>
 
         <Button
           variant="outline"
           className="w-full justify-start"
-          onClick={onSimplify}
+          onClick={() => onSimplify(selectedSnippetId)}
           disabled={isProcessing}
         >
           <RefreshCw className="mr-2 h-4 w-4" />
-          Simplify
+          Simplify {selectedSnippetId ? 'Snippet' : 'All'}
         </Button>
 
         <Button
           variant="outline"
           className="w-full justify-start"
-          onClick={onShowOriginal}
+          onClick={() => onShowOriginal(selectedSnippetId)}
           disabled={isProcessing}
         >
           <FileText className="mr-2 h-4 w-4" />
-          Show Original
+          Show Original {selectedSnippetId ? 'Snippet' : 'All'}
         </Button>
 
         <Button

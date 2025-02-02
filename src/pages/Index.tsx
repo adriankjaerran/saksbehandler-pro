@@ -4,22 +4,51 @@ import { DocumentViewer } from '@/components/DocumentViewer';
 import { Sidebar } from '@/components/Sidebar';
 import { toast } from 'sonner';
 
+interface TextSnippet {
+  id: string;
+  text: string;
+  isHighlighted: boolean;
+}
+
+const dummySnippets: TextSnippet[] = [
+  {
+    id: '1',
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    isHighlighted: false
+  },
+  {
+    id: '2',
+    text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    isHighlighted: false
+  },
+  {
+    id: '3',
+    text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    isHighlighted: false
+  }
+];
+
 const Index = () => {
-  const [content, setContent] = useState<string>('');
-  const [originalContent, setOriginalContent] = useState<string>('');
+  const [content, setContent] = useState<TextSnippet[]>(dummySnippets);
+  const [originalContent, setOriginalContent] = useState<TextSnippet[]>(dummySnippets);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [selectedSnippetId, setSelectedSnippetId] = useState<string | null>(null);
 
   const handleFilesUploaded = async (files: File[]) => {
     setIsProcessing(true);
     try {
-      // Simulate processing multiple documents
       const contents = await Promise.all(
         files.map(file => file.text())
       );
       
-      const combinedContent = contents.join('\n\n');
-      setOriginalContent(combinedContent);
-      setContent(combinedContent);
+      const newSnippets = contents.map((text, index) => ({
+        id: `uploaded-${index}`,
+        text,
+        isHighlighted: false
+      }));
+
+      setOriginalContent(newSnippets);
+      setContent(newSnippets);
     } catch (error) {
       toast.error('Error processing files');
     } finally {
@@ -27,26 +56,65 @@ const Index = () => {
     }
   };
 
-  const handleRewrite = () => {
+  const handleSnippetClick = (id: string) => {
+    setSelectedSnippetId(id === selectedSnippetId ? null : id);
+    setContent(prevContent =>
+      prevContent.map(snippet => ({
+        ...snippet,
+        isHighlighted: snippet.id === id && id !== selectedSnippetId
+      }))
+    );
+  };
+
+  const handleRewrite = (snippetId: string | null) => {
     setIsProcessing(true);
-    // Simulate rewriting
     setTimeout(() => {
-      setContent(content.split('.').reverse().join('. '));
+      setContent(prevContent =>
+        prevContent.map(snippet => {
+          if (!snippetId || snippet.id === snippetId) {
+            return {
+              ...snippet,
+              text: snippet.text.split('.').reverse().join('. ')
+            };
+          }
+          return snippet;
+        })
+      );
       setIsProcessing(false);
     }, 1000);
   };
 
-  const handleSimplify = () => {
+  const handleSimplify = (snippetId: string | null) => {
     setIsProcessing(true);
-    // Simulate simplifying
     setTimeout(() => {
-      setContent(content.split(' ').filter(word => word.length < 8).join(' '));
+      setContent(prevContent =>
+        prevContent.map(snippet => {
+          if (!snippetId || snippet.id === snippetId) {
+            return {
+              ...snippet,
+              text: snippet.text.split(' ').filter(word => word.length < 8).join(' ')
+            };
+          }
+          return snippet;
+        })
+      );
       setIsProcessing(false);
     }, 1000);
   };
 
-  const handleShowOriginal = () => {
-    setContent(originalContent);
+  const handleShowOriginal = (snippetId: string | null) => {
+    if (snippetId) {
+      const originalSnippet = originalContent.find(s => s.id === snippetId);
+      if (originalSnippet) {
+        setContent(prevContent =>
+          prevContent.map(snippet =>
+            snippet.id === snippetId ? { ...originalSnippet, isHighlighted: true } : snippet
+          )
+        );
+      }
+    } else {
+      setContent(originalContent);
+    }
   };
 
   return (
@@ -60,7 +128,11 @@ const Index = () => {
 
         <div className="flex gap-8">
           <div className="flex-1">
-            <DocumentViewer content={content} isLoading={isProcessing} />
+            <DocumentViewer 
+              content={content} 
+              isLoading={isProcessing} 
+              onSnippetClick={handleSnippetClick}
+            />
           </div>
           
           <Sidebar
@@ -68,6 +140,7 @@ const Index = () => {
             onSimplify={handleSimplify}
             onShowOriginal={handleShowOriginal}
             isProcessing={isProcessing}
+            selectedSnippetId={selectedSnippetId}
           />
         </div>
       </div>

@@ -1,12 +1,19 @@
 import React from 'react';
 import { Loader2 } from 'lucide-react';
 
-interface DocumentViewerProps {
-  content: string;
-  isLoading?: boolean;
+interface TextSnippet {
+  id: string;
+  text: string;
+  isHighlighted: boolean;
 }
 
-export const DocumentViewer: React.FC<DocumentViewerProps> = ({ content, isLoading }) => {
+interface DocumentViewerProps {
+  content: TextSnippet[];
+  isLoading?: boolean;
+  onSnippetClick: (id: string) => void;
+}
+
+export const DocumentViewer: React.FC<DocumentViewerProps> = ({ content, isLoading, onSnippetClick }) => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -17,8 +24,18 @@ export const DocumentViewer: React.FC<DocumentViewerProps> = ({ content, isLoadi
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-6 min-h-[300px] animate-fade-in">
-      <div className="prose max-w-none">
-        {content || "No content to display"}
+      <div className="prose max-w-none space-y-4">
+        {content.map((snippet) => (
+          <p
+            key={snippet.id}
+            onClick={() => onSnippetClick(snippet.id)}
+            className={`cursor-pointer transition-colors ${
+              snippet.isHighlighted ? 'bg-blue-50 hover:bg-blue-100' : 'hover:bg-gray-50'
+            } p-2 rounded`}
+          >
+            {snippet.text}
+          </p>
+        ))}
       </div>
     </div>
   );
