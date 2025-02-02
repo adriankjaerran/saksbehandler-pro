@@ -4,31 +4,16 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { FolderOpen, FileText } from 'lucide-react';
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { FileUpload } from "@/components/FileUpload";
 
 const Landing = () => {
   const navigate = useNavigate();
-  const [folderPath, setFolderPath] = useState<string>('');
   const [extractionPrompt, setExtractionPrompt] = useState<string>('');
 
-  const handleFolderSelect = async () => {
-    // In a real implementation, this would use the File System Access API
-    // For now, we'll simulate folder selection
-    setFolderPath('/example/saksmappe/123');
-    toast.success('Mappe valgt');
-  };
-
+  // Always navigate to saksdokument regardless of input
   const handleGenerateSaksdokument = () => {
-    if (!folderPath) {
-      toast.error('Vennligst velg en mappe først');
-      return;
-    }
-    if (!extractionPrompt.trim()) {
-      toast.error('Vennligst skriv hva som skal ekstraheres');
-      return;
-    }
-    // Store the folder path and prompt in sessionStorage for other pages
-    sessionStorage.setItem('selectedFolder', folderPath);
-    sessionStorage.setItem('extractionPrompt', extractionPrompt);
     navigate('/saksdokument');
   };
 
@@ -44,32 +29,16 @@ const Landing = () => {
 
         <div className="bg-[#1E2433] p-6 rounded-lg space-y-6">
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Velg saksmappe</h2>
-            <div className="flex items-center gap-4">
-              <Button 
-                onClick={handleFolderSelect}
-                className="flex items-center gap-2"
-              >
-                <FolderOpen className="w-4 h-4" />
-                Velg mappe
-              </Button>
-              {folderPath && (
-                <span className="text-gray-400">
-                  Valgt mappe: {folderPath}
-                </span>
-              )}
-            </div>
-          </div>
-
-          <div className="space-y-4">
             <h2 className="text-xl font-semibold">Hva skal ekstraheres?</h2>
-            <Textarea
+            <Input
               value={extractionPrompt}
               onChange={(e) => setExtractionPrompt(e.target.value)}
-              placeholder="F.eks.: Ekstraher all informasjon relatert til skadeomfang og arbeidsevne..."
-              className="h-32 text-white placeholder:text-gray-400"
+              className="text-black dark:text-white bg-white dark:bg-gray-800"
+              placeholder="F.eks.: Finn alle datoer og frister..."
             />
           </div>
+
+          <FileUpload onFilesUploaded={handleGenerateSaksdokument} />
 
           <Button
             onClick={handleGenerateSaksdokument}
@@ -83,9 +52,9 @@ const Landing = () => {
 
         <div className="grid grid-cols-3 gap-6">
           <div className="bg-[#1E2433] p-6 rounded-lg text-center">
-            <h3 className="font-semibold mb-2">1. Velg saksmappe</h3>
+            <h3 className="font-semibold mb-2">1. Velg dokumenter</h3>
             <p className="text-sm text-gray-400">
-              Last inn alle dokumenter fra en spesifikk saksmappe
+              Last opp dokumentene som skal analyseres
             </p>
           </div>
           <div className="bg-[#1E2433] p-6 rounded-lg text-center">

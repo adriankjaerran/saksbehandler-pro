@@ -1,69 +1,130 @@
-# Welcome to your Lovable project
+# Saksbehandler Pro
 
-## Project info
+A modern web application for automated document analysis and processing, specifically designed for handling Norwegian welfare (NAV) case documents.
 
-**URL**: https://lovable.dev/projects/74f44ea1-e212-4337-8533-2d26efe309ca
+## Overview
 
-## How can I edit this code?
+Saksbehandler Pro consists of two main parts:
 
-There are several ways of editing your application.
+1. A React-based frontend for document upload and visualization
+2. A Python-based backend development environment for document processing (located in `backend_development/`)
 
-**Use Lovable**
+## Quick Start - Frontend Demo
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/74f44ea1-e212-4337-8533-2d26efe309ca) and start prompting.
+The frontend is a standalone React application that demonstrates the UI flow with mock data.
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v16 or higher)
+- npm or bun
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+# Install dependencies
+npm install
+# or using bun
+bun install
 ```
 
-**Edit a file directly in GitHub**
+### Running the Frontend
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run dev
+# or
+bun run dev
+```
 
-**Use GitHub Codespaces**
+The application will be available at `http://localhost:5173`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Frontend Features
 
-## What technologies are used for this project?
+- Dark mode UI with smooth animations
+- Document upload interface
+- Mock document analysis visualization
+- Interactive document viewer
+- Responsive design
 
-This project is built with .
+## Backend Development Environment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The complete backend logic and notebooks can be found in the `backend_development/` directory:
 
-## How can I deploy this project?
+```
+backend_development/
+├── data/                  # Sample PDF documents
+├── llm/                   # LLM integration modules
+├── response/             # Mock response templates
+├── utils/               # PDF processing utilities
+└── pdf_synthesizer_app.ipynb  # Main development notebook
+```
 
-Simply open [Lovable](https://lovable.dev/projects/74f44ea1-e212-4337-8533-2d26efe309ca) and click on Share -> Publish.
+### Key Components in Backend Development
 
-## I want to use a custom domain - is that possible?
+1. **PDF Processing**
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+   - Located in `backend_development/utils/`
+   - Handles PDF text extraction and analysis
+   - Uses PyMuPDF for reliable text extraction
+
+2. **LLM Integration**
+
+   - Located in `backend_development/llm/`
+   - OpenAI GPT integration for document analysis
+   - Configurable prompts and parameters
+
+3. **Development Notebook**
+   - `pdf_synthesizer_app.ipynb` contains the core logic
+   - Demonstrates the complete workflow
+   - Includes examples and test cases
+
+### Environment Variables
+
+The project uses environment variables for configuration. Copy `.env.example` to create your own `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Required variables:
+
+```
+OPENAI_ORGANIZATION=your-org-id
+OPENAI_API_KEY=your-api-key
+```
+
+## Project Structure
+
+```
+saksbehandler-pro/
+├── src/                  # Frontend source code
+│   ├── components/       # React components
+│   ├── pages/           # Page components
+│   └── styles/          # CSS and styling
+├── backend_development/  # Backend development environment
+├── public/              # Static assets
+└── package.json         # Project dependencies
+```
+
+## Development Status
+
+The project is currently in development with:
+
+- ✅ Functional frontend demo
+- ✅ Complete UI flow
+- ✅ Backend development environment
+- ✅ PDF processing utilities
+- ✅ LLM integration examples
+
+The backend logic in `backend_development/` serves as a reference implementation and development environment. For production use, it needs to be integrated into a proper backend service.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

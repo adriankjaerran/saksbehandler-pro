@@ -1,0 +1,48 @@
+### Summary Document for Sykepenger Application Case
+
+**Applicant Information:**
+- Name: [Person 1's full name]
+- Date of Birth: [Fiktiv fødselsdato]
+- Personnummer: [Fiktivt personnummer]
+- Position: [Person 1's position]
+- Employer: [Person 1's employer]
+- Start Date of Sickness: [Startdato for sykemelding]
+
+**Reason for Sickness:**
+The applicant has reported severe vision problems, which include:
+- Tåkete syn: Difficulty focusing, especially when reading or using a computer.
+- Lysfølsomhet: Increased sensitivity to bright light causing pain in the eyes.
+- Dobbeltsyn: Experiencing double vision, complicating precision work and safe navigation.
+- Hyppig hodepine: Frequent headaches likely associated with the vision issues.
+
+These symptoms have progressively worsened, rendering the applicant unable to perform their job duties effectively. A consultation with [Navn på optiker/lege] on [Dato for legetime] confirmed the need for sick leave to undergo necessary examinations and treatment. A copy of the medical certificate is attached to the application [1].
+
+**Sykepenger Regulations:**
+1. **Eligibility for Sykepenger:**
+   - The applicant must have been in work for at least four weeks immediately before becoming unable to work due to illness [3].
+   - Sykepenger are provided to compensate for loss of income due to work incapacity caused by illness or injury [3].
+
+2. **Documentation Requirements:**
+   - A medical certificate is required to document the incapacity for work. This is not necessary during the employer's payment period if the employee can use self-certification [3].
+   - The medical certificate must confirm that medical reasons prevent the applicant from engaging in work-related activities [3].
+
+3. **Sykepengegrunnlag (Sick Pay Basis):**
+   - The sick pay basis is determined based on the average income reported to the A-ordningen over a specified period [3].
+   - For employees, sick pay is calculated at 100% of the sick pay basis [3].
+
+4. **Sykepengedager (Sick Pay Days):**
+   - The right to sick pay ceases after the applicant has received sick pay for a total of 248 days within the last three years [3].
+   - If the applicant has been fully capable of work for 26 weeks after the last sick pay period, they regain the right to sick pay for 248, 250, or 260 days [3].
+
+5. **Employer's Responsibilities:**
+   - The employer must be notified of the sick leave as soon as possible. If the sick leave extends, the applicant should inform the employer promptly [4].
+   - The employer is responsible for conducting follow-up conversations to assess the applicant's situation and explore possible adjustments to facilitate a return to work [4].
+
+**Next Steps:**
+- The applicant should ensure that all required documentation, including the medical certificate, is submitted to NAV promptly.
+- The applicant is encouraged to maintain communication with both NAV and their employer regarding their health status and any necessary workplace adjustments.
+
+**Contact Information:**
+- For further inquiries regarding rights and obligations during sick leave, the applicant can contact [Navn på HR-ansvarlig] at [Telefonnummer til HR-ansvarlig] or via email at [E-postadresse til HR-ansvarlig] [4].
+
+This summary consolidates all relevant information regarding the applicant's case for sykepenger, ensuring that all necessary steps and regulations are clearly outlined for effective processing.
