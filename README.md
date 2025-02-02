@@ -42,8 +42,6 @@ The application will be available at `http://localhost:5173`
 - Dark mode UI with smooth animations
 - Document upload interface
 - Mock document analysis visualization
-- Interactive document viewer
-- Responsive design
 
 ## Backend Development Environment
 
@@ -109,22 +107,6 @@ saksbehandler-pro/
 
 The project is currently in development with:
 
-- ✅ Functional frontend demo
-- ✅ Complete UI flow
-- ✅ Backend development environment
-- ✅ PDF processing utilities
-- ✅ LLM integration examples
+- ✅ Mockup frontend demo with UI flow
+- ✅ Backend code in `backend_development/` notebook to combie PDFs and generate a joint documenet with citation links 
 
-The backend logic in `backend_development/` serves as a reference implementation and development environment. For production use, it needs to be integrated into a proper backend service.
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
