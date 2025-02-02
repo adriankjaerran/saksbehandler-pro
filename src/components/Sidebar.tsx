@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wand2, FileText, Copy, RefreshCw, AlertCircle, CheckCircle2, Info } from 'lucide-react';
+import { Wand2, FileText, Copy, RefreshCw, AlertCircle, CheckCircle2, Info, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
@@ -21,27 +21,30 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(document.querySelector('.prose')?.textContent || '');
-      toast.success('Content copied to clipboard');
+      toast.success('Innhold kopiert til utklippstavlen');
     } catch (err) {
-      toast.error('Failed to copy content');
+      toast.error('Kunne ikke kopiere innhold');
     }
   };
 
   return (
     <div className="w-80 bg-[#1E2433] p-6 rounded-lg space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-white">Review</h3>
-        <span className="text-sm text-gray-400">AI Associate</span>
+        <h3 className="font-semibold text-white">Gjennomgang</h3>
+        <span className="text-sm text-gray-400">AI Assistent</span>
       </div>
 
       <div className="space-y-4">
-        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3">
+        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3 relative group">
+          <div className="absolute -left-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <ArrowRight className="w-4 h-4 text-blue-400" />
+          </div>
           <div className="flex items-start gap-2">
             <Info className="w-5 h-5 text-blue-400 mt-1" />
             <div>
-              <h4 className="text-white font-medium">Non-solicitation terms assessment</h4>
+              <h4 className="text-white font-medium">Medisinske Funn</h4>
               <p className="text-sm text-gray-400 mt-1">
-                The Joint Venture Agreement does not explicitly mention non-solicitation terms.
+                MR-undersøkelsen bekrefter alvorlig kneskade som krever operativ behandling.
               </p>
             </div>
           </div>
@@ -52,7 +55,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onRewrite(selectedSnippetId)}
             >
-              Highlight
+              Marker
             </Button>
             <Button
               variant="outline"
@@ -60,7 +63,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onSimplify(selectedSnippetId)}
             >
-              Explain
+              Forklar
             </Button>
             <Button
               variant="outline"
@@ -68,18 +71,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onShowOriginal(selectedSnippetId)}
             >
-              Re-draft
+              Omskriv
             </Button>
           </div>
         </div>
 
-        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3">
+        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3 relative group">
+          <div className="absolute -left-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <ArrowRight className="w-4 h-4 text-green-400" />
+          </div>
           <div className="flex items-start gap-2">
             <CheckCircle2 className="w-5 h-5 text-green-400 mt-1" />
             <div>
-              <h4 className="text-white font-medium">Equitable Profit and Loss Distribution Formula</h4>
+              <h4 className="text-white font-medium">NAV Vedtak</h4>
               <p className="text-sm text-gray-400 mt-1">
-                This formula ensures that profits and losses are distributed based on the actual contribution of each party.
+                Positivt vedtak om arbeidsavklaringspenger basert på dokumentert yrkesskade.
               </p>
             </div>
           </div>
@@ -90,7 +96,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onRewrite(selectedSnippetId)}
             >
-              Highlight
+              Marker
             </Button>
             <Button
               variant="outline"
@@ -98,7 +104,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onSimplify(selectedSnippetId)}
             >
-              Explain
+              Forklar
             </Button>
             <Button
               variant="outline"
@@ -106,18 +112,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onShowOriginal(selectedSnippetId)}
             >
-              Re-draft
+              Omskriv
             </Button>
           </div>
         </div>
 
-        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3">
+        <div className="bg-[#1A1F2C] rounded-lg p-4 space-y-3 relative group">
+          <div className="absolute -left-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <ArrowRight className="w-4 h-4 text-orange-400" />
+          </div>
           <div className="flex items-start gap-2">
             <AlertCircle className="w-5 h-5 text-orange-400 mt-1" />
             <div>
-              <h4 className="text-white font-medium">Lack of Explicit Mutual Objectives Balance</h4>
+              <h4 className="text-white font-medium">Spesialistvurdering</h4>
               <p className="text-sm text-gray-400 mt-1">
-                While the agreement specifies percentage ownership and responsibilities, it lacks clear alignment of goals.
+                Vurdering indikerer langvarig rehabiliteringsperiode som påvirker arbeidsevnen betydelig.
               </p>
             </div>
           </div>
@@ -128,7 +137,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onRewrite(selectedSnippetId)}
             >
-              Highlight
+              Marker
             </Button>
             <Button
               variant="outline"
@@ -136,7 +145,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onSimplify(selectedSnippetId)}
             >
-              Explain
+              Forklar
             </Button>
             <Button
               variant="outline"
@@ -144,7 +153,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="text-xs"
               onClick={() => onShowOriginal(selectedSnippetId)}
             >
-              Re-draft
+              Omskriv
             </Button>
           </div>
         </div>
@@ -158,7 +167,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           disabled={isProcessing}
         >
           <Copy className="mr-2 h-4 w-4" />
-          Copy All Content
+          Kopier Alt Innhold
         </Button>
       </div>
     </div>

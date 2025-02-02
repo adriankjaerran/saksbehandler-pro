@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { FileUpload } from '@/components/FileUpload';
 import { DocumentViewer } from '@/components/DocumentViewer';
 import { Sidebar } from '@/components/Sidebar';
+import { Navigation } from '@/components/Navigation';
 import { toast } from 'sonner';
 
 interface TextSnippet {
@@ -40,33 +40,11 @@ const dummySnippets: TextSnippet[] = [
   }
 ];
 
-const Index = () => {
+const Saksdokument = () => {
   const [content, setContent] = useState<TextSnippet[]>(dummySnippets);
   const [originalContent, setOriginalContent] = useState<TextSnippet[]>(dummySnippets);
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedSnippetId, setSelectedSnippetId] = useState<string | null>(null);
-
-  const handleFilesUploaded = async (files: File[]) => {
-    setIsProcessing(true);
-    try {
-      const contents = await Promise.all(
-        files.map(file => file.text())
-      );
-      
-      const newSnippets = contents.map((text, index) => ({
-        id: `uploaded-${index}`,
-        text,
-        isHighlighted: false
-      }));
-
-      setOriginalContent(newSnippets);
-      setContent(newSnippets);
-    } catch (error) {
-      toast.error('Error processing files');
-    } finally {
-      setIsProcessing(false);
-    }
-  };
 
   const handleSnippetClick = (id: string) => {
     setSelectedSnippetId(id === selectedSnippetId ? null : id);
@@ -132,18 +110,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-[#1A1F2C]">
       <div className="container mx-auto py-4">
-        <div className="flex items-center justify-between mb-6 text-white">
-          <h1 className="text-xl font-semibold">NAV Saksbehandling - Yrkesskade</h1>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-400">Automatisk Analyse</span>
-            <span className="bg-[#FFE81E] text-black px-3 py-1 rounded-full text-sm">Tid Spart: 2 timer 15min</span>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 gap-4 mb-6">
-          <FileUpload onFilesUploaded={handleFilesUploaded} />
-        </div>
-
+        <Navigation />
         <div className="flex gap-6">
           <div className="flex-1">
             <DocumentViewer 
@@ -152,7 +119,6 @@ const Index = () => {
               onSnippetClick={handleSnippetClick}
             />
           </div>
-          
           <Sidebar
             onRewrite={handleRewrite}
             onSimplify={handleSimplify}
@@ -166,4 +132,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Saksdokument;
