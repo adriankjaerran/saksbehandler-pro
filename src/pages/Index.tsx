@@ -32,11 +32,11 @@ const dummySnippets: TextSnippet[] = [
   },
   {
     id: '3',
-    text: "3.0 Percentage Ownership. Each Venturer's respective interest in the Joint Venture (hereinafter called "Percentage Ownership Interest") is indicated below: Organisation 1 - Fifty-one percent (51%), Organisation 2 - Forty-nine percent (49%).",
+    text: '3.0 Percentage Ownership. Each Venturer\'s respective interest in the Joint Venture (hereinafter called "Percentage Ownership Interest") is indicated below: Organisation 1 - Fifty-one percent (51%), Organisation 2 - Forty-nine percent (49%).',
     isHighlighted: false,
     status: 'warning',
     title: 'Lack of Explicit Mutual Objectives Balance',
-    description: 'While the agreement specifies percentage ownership and responsibilities, it lacks a clear statement on how the joint venture's goals will be aligned to benefit both parties equally.'
+    description: 'While the agreement specifies percentage ownership and responsibilities, it lacks a clear statement on how the joint venture\'s goals will be aligned to benefit both parties equally.'
   }
 ];
 
